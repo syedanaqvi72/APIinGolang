@@ -8,10 +8,10 @@ import (
 )
 
 var Database *gorm.DB
-var urlDSN = "root: admin@tcp( local host: 3306)"
+var urlDSN = "mahak: Masooma2013@tcp( local host: 3306)"
 var err error
 
-func dataMigration() {
+func DataMigration() {
 	Database, err = gorm.Open(mysql.Open(urlDSN), &gorm.Config{})
 	if err != nil {
 		fmt.Println(err.Error())
