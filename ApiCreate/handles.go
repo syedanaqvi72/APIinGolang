@@ -14,9 +14,16 @@ func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetEmployee(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var employees []Employee
+	Database.Find(&employees)
+	json.NewEncoder(w).Encode(employees)
 
 }
 
 func GetEmployeeById(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Content-Type", "application/json")
+	var employees Employee
+	Database.First(&employees)
+	json.NewEncoder(w).Encode(employees)
 }

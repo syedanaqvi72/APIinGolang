@@ -9,7 +9,9 @@ import (
 
 func HandlerRouting() {
 	r := mux.NewRouter()
-	r.HandleFunc("/employee", CreateEmployee).Methods("POST")
+	r.HandleFunc("/employees", GetEmployee).Methods("GET")
+	r.HandleFunc("/employees", GetEmployeeById).Methods("GET")
+	r.HandleFunc("/employees", CreateEmployee).Methods("POST")
 
-	log.Fatal(http.ListenAndServe(":1214", r))
+	log.Fatal(http.ListenAndServe(":8080", r))
 }
