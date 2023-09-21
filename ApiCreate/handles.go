@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
@@ -24,6 +26,6 @@ func GetEmployee(w http.ResponseWriter, r *http.Request) {
 func GetEmployeeById(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var employees Employee
-	Database.First(&employees)
+	Database.First(&employees, mux.Vars(r)["eid"])
 	json.NewEncoder(w).Encode(employees)
 }
