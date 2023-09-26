@@ -29,3 +29,13 @@ func GetEmployeeById(w http.ResponseWriter, r *http.Request) {
 	Database.First(&employees, mux.Vars(r)["eid"])
 	json.NewEncoder(w).Encode(employees)
 }
+
+func UpdateEmployeeById(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var employees Employee
+	Database.First(&employees, mux.Vars(r)["eid"])
+	json.NewDecoder(r.Body).Decode(&employees)
+	Database.Save(&employees)
+	json.NewEncoder(w).Encode(employees)
+
+}
