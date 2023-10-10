@@ -9,40 +9,40 @@ import (
 
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var emp Employee
+	var emp Employee.name=mehak
 	json.NewDecoder(r.Body).Decode(&emp)
-	Database.Create(&emp)
+//	Database.Create(&emp)
 	json.NewEncoder(w).Encode(emp)
 }
 
-func GetEmployee(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var employees []Employee
-	Database.Find(&employees)
-	json.NewEncoder(w).Encode(employees)
+//func GetEmployee(w http.ResponseWriter, r *http.Request) {
+//	w.Header().Set("Content-Type", "application/json")
+//	var employees []Employee
+//	Database.Find(&employees)
+//	json.NewEncoder(w).Encode(employees)
 
-}
+//}
 
-func GetEmployeeById(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var employees Employee
-	Database.First(&employees, mux.Vars(r)["eid"])
-	json.NewEncoder(w).Encode(employees)
-}
+//func GetEmployeeById(w http.ResponseWriter, r *http.Request) {
+//	w.Header().Set("Content-Type", "application/json")
+//	var employees Employee
+//	Database.First(&employees, mux.Vars(r)["eid"])
+//	json.NewEncoder(w).Encode(employees)
+//}
 
-func UpdateEmployeeById(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var employees Employee
-	Database.First(&employees, mux.Vars(r)["eid"])
-	json.NewDecoder(r.Body).Decode(&employees)
-	Database.Save(&employees)
-	json.NewEncoder(w).Encode(employees)
+//func UpdateEmployeeById(w http.ResponseWriter, r *http.//Request) {
+//	w.Header().Set("Content-Type", "application/json")
+//	var employees Employee
+//	Database.First(&employees, mux.Vars(r)["eid"])
+//	json.NewDecoder(r.Body).Decode(&employees)
+//	Database.Save(&employees)
+//	json.NewEncoder(w).Encode(employees)
 
-}
+//}
 
-func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var emp Employee
-	Database.Delete(emp, mux.Vars(r)["eid"])
-	json.NewEncoder(w).Encode("employee is removed")
+//func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
+//	w.Header().Set("Content-Type", "application/json")
+//	var emp Employee
+	//Database.Delete(emp, mux.Vars(r)["eid"])
+	//json.NewEncoder(w).Encode("employee is removed")
 }
