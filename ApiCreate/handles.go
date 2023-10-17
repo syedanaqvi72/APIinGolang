@@ -3,15 +3,13 @@ package main
 import (
 	"encoding/json"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
 func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var emp Employee.name=mehak
+	var emp Employee
 	json.NewDecoder(r.Body).Decode(&emp)
-//	Database.Create(&emp)
+	//	Database.Create(&emp)
 	json.NewEncoder(w).Encode(emp)
 }
 
@@ -43,6 +41,5 @@ func CreateEmployee(w http.ResponseWriter, r *http.Request) {
 //func DeleteEmployee(w http.ResponseWriter, r *http.Request) {
 //	w.Header().Set("Content-Type", "application/json")
 //	var emp Employee
-	//Database.Delete(emp, mux.Vars(r)["eid"])
-	//json.NewEncoder(w).Encode("employee is removed")
-}
+//Database.Delete(emp, mux.Vars(r)["eid"])
+//json.NewEncoder(w).Encode("employee is removed")}
